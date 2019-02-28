@@ -90,12 +90,21 @@ public class DiGraph {
 
     String printGraph() {
         StringBuffer stringBuffer = new StringBuffer();
-        for (Node n: adjacentNodes.keySet()) {
-            if (!adjacentNodes.get(n).isEmpty()){
-                stringBuffer.append(n);
-                stringBuffer.append(" -> ");
-                stringBuffer.append(adjacentNodes.get(n).get(0));
-                stringBuffer.append('\n');
+        for (Node n1: adjacentNodes.keySet()) {
+            if (!adjacentNodes.get(n1).isEmpty()){
+                for (Node n2: adjacentNodes.get(n1)) {
+                    if (!adjacentNodes.get(n2).contains(n1)) {
+                        stringBuffer.append(n1);
+                        stringBuffer.append("->");
+                        stringBuffer.append(n2);
+                        stringBuffer.append("\n");
+                    } else if (adjacentNodes.get(n2).contains(n1)) {
+                        stringBuffer.append(n1);
+                        stringBuffer.append("<->");
+                        stringBuffer.append(n2);
+                        stringBuffer.append("\n");
+                    }
+                }
             }
         }
 
@@ -131,7 +140,9 @@ public class DiGraph {
         DiGraph DG = new DiGraph();
         DG.addNode("Xin Li");
         DG.addNode("Xueying Wang");
+        DG.addNode("Ari Trachtenberg");
         DG.addArc("Xin Li", "Xueying Wang");
+        DG.addArc("Xin Li", "Ari Trachtenberg");
         DG.addArc("Xueying Wang", "Xin Li");
 
         System.out.println(DG.printGraph());
