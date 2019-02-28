@@ -99,10 +99,12 @@ public class DiGraph {
                         stringBuffer.append(n2);
                         stringBuffer.append("\n");
                     } else if (adjacentNodes.get(n2).contains(n1)) {
-                        stringBuffer.append(n1);
-                        stringBuffer.append("<->");
-                        stringBuffer.append(n2);
-                        stringBuffer.append("\n");
+                        if (stringBuffer.indexOf(n2+"<->"+n1) == -1) {
+                            stringBuffer.append(n1);
+                            stringBuffer.append("<->");
+                            stringBuffer.append(n2);
+                            stringBuffer.append("\n");
+                        }
                     }
                 }
             }
