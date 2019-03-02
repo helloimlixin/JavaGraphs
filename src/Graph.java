@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
  * </p>
  *
  */
-public class DiGraph {
+public class Graph {
     private Map<Node, List<Node>> adjacentNodes;
 
     /**
      * <h2>Class constructor.</h2>
      */
-    DiGraph() {
+    Graph() {
         this.adjacentNodes = new HashMap<Node, List<Node>>();
     }
 
@@ -136,17 +136,5 @@ public class DiGraph {
         public String toString() {
             return label;
         }
-    }
-
-    public static void main(String[] args) {
-        DiGraph DG = new DiGraph();
-        DG.addNode("Xin Li");
-        DG.addNode("Xueying Wang");
-        DG.addNode("Ari Trachtenberg");
-        DG.addArc("Xin Li", "Xueying Wang");
-        DG.addArc("Xin Li", "Ari Trachtenberg");
-        DG.addArc("Xueying Wang", "Xin Li");
-
-        System.out.println(DG.printGraph());
     }
 }
